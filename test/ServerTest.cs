@@ -40,6 +40,16 @@ namespace test
 
             Assert.AreEqual<string>(server.remarks, "测试中文");
             Assert.AreEqual<string>(server.group, "firewallAirport");
+
+            server = new Server();
+            string badUdpPort = "ssr://MTI3LjAuMC4xOjEyMzQ6YXV0aF9hZXMxMjhfbWQ1OmFlcy0xMjgtY2ZiOnRsczEuMl90aWNrZXRfYXV0aDpZV0ZoWW1KaS8_b2Jmc3BhcmFtPVluSmxZV3QzWVRFeExtMXZaUSZyZW1hcmtzPTVyV0w2Sy1WNUxpdDVwYUgmdWRwcG9ydD02NTUzNTEx";
+
+            try
+            {
+                server.ServerFromSSR(badUdpPort, "firewallAirport");
+                Assert.Fail();
+            }
+            catch (ArgumentOutOfRangeException) { }
         }
 
         [TestMethod]

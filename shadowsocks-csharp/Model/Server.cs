@@ -412,6 +412,8 @@ namespace Shadowsocks.Model
             if (params_dict.ContainsKey("udpport"))
             {
                 server_udp_port = int.Parse(params_dict["udpport"]);
+                if (server_udp_port > IPEndPoint.MaxPort || server_udp_port < IPEndPoint.MinPort)
+                    throw new ArgumentOutOfRangeException("Server port out of range.");
             }
             if (!String.IsNullOrEmpty(force_group))
                 group = force_group;

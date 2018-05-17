@@ -1207,9 +1207,9 @@ namespace Shadowsocks.View
                         ShowConfigForm(true);
                 }
             }
-            catch
+            catch (Exception exc)
             {
-
+                MessageBox.Show(exc.Message);
             }
         }
 
